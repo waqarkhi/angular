@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>{{param}}</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let menu of content">
+          <a href="javascript:void(0)" (click)="editMenu(menu._id)">{{menu.title}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6" *ngIf="editmenu">
+      <div class="form-group">
+
+      </div>
+      <h4>Menu Items</h4>
+      <form (submit)="addMenu($event)">
+        <div class="row">
+          <div class="col-md-5">
+            <input type="text" class="form-control" name="menu_text" placeholder="Menu Title" [(ngModel)]="menu_text">
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" name="menu_href" placeholder="Link" [(ngModel)]="menu_href">
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-success">Add</button>
+          </div>
+        </div>
+      </form>
+      <ul class="list-group mt-4">
+        <li class="list-group-item" *ngFor="let item of editmenu">
+          {{item.text}} - {{item.href}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
